@@ -1,16 +1,16 @@
-from django.http import HttpResponse
-from django.core import serializers
 from django.shortcuts import render, redirect, get_object_or_404
 from main.forms import NewsForm
 from main.models import News
+from django.http import HttpResponse
+from django.core import serializers
 
 def show_main(request):
     news_list = News.objects.all()
 
     context = {
-        'npm' : '2406407083',
-        'name': 'Wildan Al Rizka Yusuf',
-        'class': 'PBP D',
+        'npm' : '240123456',
+        'name': 'Haru Urara',
+        'class': 'PBP A',
         'news_list': news_list
     }
 
@@ -51,13 +51,13 @@ def show_xml_by_id(request, news_id):
         news_item = News.objects.filter(pk=news_id)
         xml_data = serializers.serialize("xml", news_item)
         return HttpResponse(xml_data, content_type="application/xml")
-    except:
+    except News.DoesNotExist:
         return HttpResponse(status=404)
-    
+
 def show_json_by_id(request, news_id):
     try:
-        news_item = News.objects.filter(pk=news_id)
-        json_data = serializers.serialize("json", news_item)
+        news_item = News.objects.get(pk=news_id)
+        json_data = serializers.serialize("json", [news_item])
         return HttpResponse(json_data, content_type="application/json")
-    except:
-            return HttpResponse(status=404)
+    except News.DoesNotExist:
+        return HttpResponse(status=404)
