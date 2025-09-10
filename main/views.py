@@ -11,7 +11,7 @@ def show_main(request):
         'npm' : '240123456',
         'name': 'Haru Urara',
         'class': 'PBP A',
-        'news_list': news_list
+        'news_list': 'news_list',
     }
 
     return render(request, "main.html", context)
