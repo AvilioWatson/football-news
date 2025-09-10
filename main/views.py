@@ -9,7 +9,7 @@ def show_main(request):
 
     context = {
         'npm' : '2406407083',
-        'name': 'Wildan Al Rizka Yusuf',
+        'name': 'Wildan Al Rizka Y',
         'class': 'PBP D',
         'news_list': news_list
     }
