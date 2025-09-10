@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block content %}
+ {% block content %}
 <h1>Football News</h1>
 
 <h5>NPM: </h5>
@@ -19,7 +19,7 @@
 
 {% if not news_list %}
 <p>Belum ada data berita pada football news.</p>
-{% else %}
+{% else %} 
 
 {% for news in news_list %}
 <div>
@@ -44,3 +44,4 @@
 {% endfor %}
 
 {% endif %}
+{% endblock content %}
